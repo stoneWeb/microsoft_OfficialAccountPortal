@@ -1,0 +1,35 @@
+<header id="header">
+  OFFICIAL ACCOUNT
+  <div class="headbtns">
+    <a href="javascript:;" class="hbtn1"><i></i></a>
+    <a href="javascript:;" class="hbtn2"><i></i></a>
+    <a href="javascript:;" class="hbtn3"><i></i></a>
+  </div>
+</header>
+<main id="main">
+  <aside id="aside">
+      <ul id="aside-menu">
+        <li><a class="menu-1" href="javascript:;">Home</a></li>
+        <li><a class="menu-2" href="javascript:;">Customer</a></li>
+        <li><a class="menu-3" href="javascript:;">Conversation</a></li>
+        <li><a class="menu-4" href="javascript:;">Engagement content</a></li>
+        <li>
+          <a href="javascript:;" class="menu-5">Bot management</a>
+          <ul class="aside-submenu">
+            <li class="active"><a href="javascript:;">Bot knowledge</a></li>
+            <li><a href="javascript:;">Channel setup</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="aside-user">
+        <span class="userface" style="background-image:url(http://www.runoob.com/wp-content/uploads/2014/06/angular.jpg)"></span>
+        <div class="user-info">
+          <a href="javascript:;" ng-bind="user.name">Feifan’s Pethome</a>
+          <strong>Unverified</strong>
+        </div>
+      </div>
+  </aside>
+  <main id="content" ui-view="menuContent">
+  </main>
+</main>
+<bot/>

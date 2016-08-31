@@ -1,0 +1,153 @@
+<div class="main_wrap">
+  <ol class="breadcrumb" ng-bind-html="crumbs()"></ol>
+  <div class="head_title">
+    <h1>Bot knowledge</h1>
+    <a href="javascript:;" class="btn btn-default" ng-click="toggleBot()">Bot test</a>
+    <a href="javascript:;" class="btn btn-default" ng-click="checkTasks()">Tasks</a>
+  </div>
+  <section class="content_wrap">
+
+      <uib-tabset active="bk_1">
+        <uib-tab index="0" heading="FAQ">
+          <div class="form-inline tab-form">
+              <button class="btn btn-primary" ng-click="addNewFaq()">Add new</button>
+              <div class="btn-group" uib-dropdown is-open="status.isopen">
+                <button id="single-button" type="button" class="btn btn-default" uib-dropdown-toggle ng-disabled="disabled">
+                  Import <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                  <li role="menuitem"><a href="javascript:;" ng-click="importUrl()">Import from website</a></li>
+                  <li role="menuitem"><a href="javascript:;" ng-click="importFile()">Import from file</a></li>
+                  <li role="menuitem"><a href="javascript:;">Intelligent reccommondation</a></li>
+                </ul>
+              </div>
+
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+              </div>
+          </div>
+          <div class="table_wrap">
+            <div class="select_info" ng-class='{"showHead": faqCkNum>0}'>
+              <span class="tab-filter">{{faqCkNum}} item selected <a href="javascript:;" ng-click="deleteItem()">Delete</a></span>
+            </div>
+            <div class="loading" ng-if="faq === null">loading...</div>
+            <div ng-if="faq && faq.length == 0">no data</div>
+            <table class="table table-hover" ng-if="faq && faq.length > 0">
+              <thead>
+                <tr>
+                  <th><input type="checkbox" ng-model="faqcall" ng-click="faqCheckAll($event)"></th>
+                  <th><span class="td-head">question</span></th>
+                  <th><span class="td-head">Answer</span></th>
+                  <th><span class="td-head">Update Time</span></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="item in faq track by $index" ng-class="{selected: item.checked}">
+                  <td><input type="checkbox" ng-model="item.checked" ng-click="faqCheck($event, $index)"></td>
+                  <td class="tip-trigger">{{item.Question}} <div class="list-tip" ng-if="item.html">
+                    <div><div ng-bind-html="item.html"></div><a href="javascript:;" ng-click="editItem($event, $index)">Manage</a></div></div>
+                  </td>
+                  <td>{{item.Answer}}</td>
+                  <td>{{item.time}}</td>
+                  <td><a href="javascript:;" ng-click="editItem($event, $index)">Edit</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </uib-tab>
+        <uib-tab index="1" heading="Product data">
+          <div class="form-inline tab-form">
+              <button class="btn btn-primary">Import</button>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+              </div>
+          </div>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th><input type="checkbox"></th>
+                <th><span>Product name</span></th>
+                <th>Answer</th>
+                <th>Update Time</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input type="checkbox"></td>
+                <td>What is a Collection?</td>
+                <td>Collections are simple way to bookmark and curate t…</td>
+                <td>6:50pm 7.Jan 2016</td>
+                <td><a href="javascript:;">Edit</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </uib-tab>
+        <uib-tab index="2" heading="Business profile">
+          <div class="buspr">
+            <div class="buspr_list">
+              <h3>Basic Information <a href="javascript:;">Edit</a></h3>
+              <table class="table">
+                <tr>
+                  <td width="30%">Submitter UId</td>
+                  <td>234254</td>
+                </tr>
+                <tr>
+                  <td width="30%">Business name</td>
+                  <td>Feifan’s Pethome</td>
+                </tr>
+                <tr>
+                  <td width="30%">Website</td>
+                  <td>www.feifanspethome.com</td>
+                </tr>
+                <tr>
+                  <td width="30%">Address</td>
+                  <td>291 Broadway New York, NY  10007 US</td>
+                </tr>
+                <tr>
+                  <td width="30%">Description</td>
+                  <td>Cute cats in store!</td>
+                </tr>
+              </table>
+            </div>
+            <div class="buspr_list">
+              <h3>Category Information <a href="javascript:;">Edit</a></h3>
+              <table class="table">
+                <tr>
+                  <td width="30%">Category</td>
+                  <td>Animal & Pet Services</td>
+                </tr>
+                <tr>
+                  <td width="30%">Market</td>
+                  <td>Animal & Pet Services</td>
+                </tr>
+                <tr>
+                  <td width="30%">Tag Line</td>
+                  <td>Your cat is watching you</td>
+                </tr>
+              </table>
+            </div>
+            <div class="buspr_list">
+              <h3>Contact Details <a href="javascript:;">Edit</a></h3>
+              <table class="table">
+                <tr>
+                  <td width="30%">Phone number</td>
+                  <td>(212) 406-5310</td>
+                </tr>
+                <tr>
+                  <td width="30%">Mobile phone number</td>
+                  <td>287549282</td>
+                </tr>
+                <tr>
+                  <td width="30%">Email</td>
+                  <td>Surpport@feifanspethome.com</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </uib-tab>
+      </uib-tabset>
+  </section>
+</div>
